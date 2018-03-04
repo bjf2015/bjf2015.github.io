@@ -55,6 +55,8 @@ var secondGuess = '';
 var count = 0;
 var previousTarget = null;
 var delay = 1200;
+var score =100;
+var sound = "http://dev.interactive-creation-works.net/1/1.ogg";
 
 var game = document.getElementById('game');
 var grid = document.createElement('section');
@@ -89,6 +91,7 @@ var match = function match() {
   });
 };
 
+
 var resetGuesses = function resetGuesses() {
   firstGuess = '';
   secondGuess = '';
@@ -103,6 +106,9 @@ var resetGuesses = function resetGuesses() {
 grid.addEventListener('click', function (event) {
 
   var clicked = event.target;
+  score = score - 1;
+  console.log(score);
+  document.getElementById("score").innerHTML = score;
 
   if (clicked.nodeName === 'SECTION' || clicked === previousTarget || clicked.parentNode.classList.contains('selected')) {
     return;
